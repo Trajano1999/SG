@@ -1,6 +1,6 @@
 import * as THREE from '../libs/three.module.js'
 
-class MyCylinder extends THREE.Object3D {
+class MyTetrahedron extends THREE.Object3D {
 	constructor(gui, titleGui) {
 		super();
 
@@ -8,17 +8,15 @@ class MyCylinder extends THREE.Object3D {
 		// Se crea primero porque otros métodos usan las variables que se definen para la interfaz
 		this.createGUI(gui, titleGui);
 
-		var cylinderGeom = new THREE.CylinderGeometry( 2.5, 2.5, 6, 32 );
-		var cylinderMat  = new THREE.MeshPhongMaterial({ color: 0xCF0000 });
-		var cylinder     = new THREE.Mesh(cylinderGeom, cylinderMat);
-
-		// Y añadirlo como hijo del Object3D (el this)
-		this.add(cylinder);
+        var sphereGeom = new THREE.SphereGeometry( 3, 32, 16 );
+        var sphereMat  = new THREE.MeshPhongMaterial( { color: 0xCF0000 } );
+        var sphere     = new THREE.Mesh( sphereGeom, sphereMat );
+        this.add(sphere);
 
 		// Las geometrías se crean centradas en el origen.
 		// Como queremos que el sistema de referencia esté en la base,
 		// subimos el Mesh de la caja la mitad de su altura
-		cylinder.position.y = 3;
+		sphere.position.y = 3;
 	}
 
 	createGUI(gui, titleGui) {
@@ -87,4 +85,4 @@ class MyCylinder extends THREE.Object3D {
 	}
 }
 
-export { MyCylinder };
+export { MyTetrahedron };

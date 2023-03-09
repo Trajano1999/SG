@@ -9,7 +9,9 @@ import { Stats } from '../libs/stats.module.js'
 // Clases de mi proyecto
 
 import { MyBox } from './MyBox.js'
-
+import { MyCylinder } from './MyCylinder.js'
+import { MySphere } from './MySphere.js'
+import { MyTetrahedron } from './MyTetrahedron.js'
 
 /// La clase fachada del modelo
 /**
@@ -50,6 +52,30 @@ class MyScene extends THREE.Scene {
 		// la gui y el texto bajo el que se agruparán los controles de la interfaz que añada el modelo.
 		this.model = new MyBox(this.gui, "Controles de la Caja");
 		this.add(this.model);
+
+		// Conectando MyCylinder a MyScene
+		this.axisCylinder = new THREE.AxesHelper(5);
+		this.add(this.axisCylinder);
+		this.axisCylinder.position.x = -10;
+		this.modelCylinder = new MyCylinder(this.gui, "Controles del Cilindro");
+		this.add(this.modelCylinder);
+		this.modelCylinder.position.x = -10;
+
+		// Conectando MySphere a MyScene
+		this.axisSphere = new THREE.AxesHelper(5);
+		this.add(this.axisSphere);
+		this.axisSphere.position.x = 10;
+		this.modelSphere = new MySphere(this.gui, "Controles de la Esfera");
+		this.add(this.modelSphere);
+		this.modelSphere.position.x = 10;
+
+		// Conectando MyTetrahedron a MyScene
+		/*this.axisSphere = new THREE.AxesHelper(5);
+		this.add(this.axisSphere);
+		this.axisSphere.position.x = 10;
+		this.modelSphere = new MySphere(this.gui, "Controles de la Esfera");
+		this.add(this.modelSphere);
+		this.modelSphere.position.x = 10;*/
 	}
 
 	initStats() {
